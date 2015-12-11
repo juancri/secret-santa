@@ -1,0 +1,25 @@
+{
+  "name": "secret-santa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juancri/secret-santa.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juancri/secret-santa/issues"
+  },
+  "homepage": "https://github.com/juancri/secret-santa#readme",
+  "dependencies": {
+    "aws-sdk": "^2.2.22",
+    "handlebars": "^4.0.5",
+    "linq": "^3.0.5",
+    "nconf": "^0.8.2"
+  }
+}
