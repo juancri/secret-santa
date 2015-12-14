@@ -2,6 +2,7 @@
         "region": "us-east-1",
         "source": "Santa <your.validated@email.com>",
         "subject": "Secret Santa",
+        "copy": [ "myownaddress@example.com", "otheradresstocopy@example.com" ],
         "people": [
                 { "name": "Person 1", "email": "person1@example.com" },
                 { "name": "Person 2", "email": "person2@example.com" },

@@ -9,6 +9,7 @@ nconf.file ({ file: 'config.json' });
 var region = nconf.get ('region');
 var source = nconf.get ('source');
 var subject = nconf.get ('subject');
+var copy = nconf.get ('copy');
 var people = nconf.get ('people');
 var message = nconf.get ('message');
 var template = handlebars.compile (message);
@@ -26,13 +27,15 @@ var couples = Enumerable
         .toArray ();
 
 // Send email to each one
+var destination = { };
+if (copy)
+        destination.BccAddresses = copy;
+
 Enumerable.from (couples).forEach (function (couple)
 {
+        destination.ToAddresses = [ couple.from.email ];
         var params = {
-                Destination: {
-                        ToAddresses: [ couple.from.email ],
-                        BccAddresses: [ source ]
-                },
+                Destination: destination,
                 Message: {
                         Body: { Text: { Data: template (couple) } },
                         Subject: { Data: subject }
