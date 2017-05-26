@@ -1,4 +1,5 @@
 {
+        "profile": null,
         "region": "us-east-1",
         "source": "Santa <your.validated@email.com>",
         "subject": "Secret Santa",
