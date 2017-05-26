@@ -12,6 +12,12 @@ var subject = nconf.get ('subject');
 var copy = nconf.get ('copy');
 var people = nconf.get ('people');
 var message = nconf.get ('message');
+var profile = nconf.get ('profile');
+if (profile)
+{
+        let credentials = new AWS.SharedIniFileCredentials({ profile: profile  });
+        AWS.config.credentials = credentials;
+}
 var template = handlebars.compile (message);
 var ses = new AWS.SES({ 'region': region });
 
