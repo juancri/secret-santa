@@ -12,9 +12,14 @@ Run ```npm install```
 - Run ```cp config.json.sample config.json``` and edit the config.json file
 - Create the AWS credentials file (~/.aws/credentials). More information [here](http://aws.amazon.com/developers/getting-started/nodejs/).
 
+### Build
+
+Execute ```gulp```
+
+
 ### Run
 
-Execute ```node run.js```
+Execute ```node dist/run.js```
 
 
 ## Remarks
