@@ -2,23 +2,26 @@
 const gulp = require ('gulp');
 const clean = require('gulp-clean');
 const ts = require ('gulp-typescript');
-const tslint = require ('gulp-tslint');
+const eslint = require ('gulp-eslint');
 
 const tsProject = ts.createProject ('tsconfig.json');
 
 // Tasks
 gulp.task ('clean', () => gulp
-	.src ('dist', { read: false })
+	.src ('dist', { read: false, allowEmpty: true })
 	.pipe (clean ()));
 
 gulp.task ('lint', () => gulp
 	.src ('src/**/*.ts')
-	.pipe (tslint ({ formatter: 'stylish' }))
-	.pipe (tslint.report()));
+	.pipe(eslint())
+	.pipe(eslint.format())
+	.pipe(eslint.failAfterError()));
 
-gulp.task ('build', ['clean', 'lint'], () => gulp
+gulp.task ('compile', () => gulp
 	.src ('src/**/*.ts')
 	.pipe (tsProject())
 	.pipe (gulp.dest ('dist')));
 
-gulp.task ('default', ['build']);
+gulp.task ('build', gulp.series (gulp.parallel ('clean', 'lint'), 'compile'));
+
+gulp.task ('default', gulp.parallel ('build'));

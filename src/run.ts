@@ -4,22 +4,21 @@ import * as Enumerable from 'linq';
 import * as handlebars from 'handlebars';
 import * as jsonfile from 'jsonfile';
 import * as path from 'path';
-import * as winston from 'winston';
 
-interface IPerson
+interface Person
 {
 	name: string;
 	email: string;
 }
 
-interface IConfig
+interface Config
 {
 	profile: string | null;
 	region: string;
 	source: string;
 	subject: string;
 	copy: string[];
-	people: IPerson[];
+	people: Person[];
 	message: string;
 }
 
@@ -29,7 +28,7 @@ interface IConfig
 	{
 		// Config
 		const config = jsonfile.readFileSync (
-			path.join (__dirname, '../config.json')) as IConfig;
+			path.join (__dirname, '../config.json')) as Config;
 		const template = handlebars.compile (config.message);
 		const ses = new AWS.SES ({ region: config.region });
 
@@ -69,6 +68,6 @@ interface IConfig
 	}
 	catch (e)
 	{
-		winston.error (e);
+		console.error(e);
 	}
 })();
