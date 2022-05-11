@@ -1,13 +1,12 @@
 # secret-santa
+
 Secret santa sends email message to everyone using AWS SES
 
 ## Getting started
 
 ### Requirements
 
-- Node 12.x
-- Gulp (```npm install -g gulp```)
-
+- Node 16.x
 ### Install dependencies
 
 Run ```npm install```
@@ -19,7 +18,7 @@ Run ```npm install```
 
 ### Build
 
-Execute ```gulp```
+Execute ```make```
 
 
 ### Run
